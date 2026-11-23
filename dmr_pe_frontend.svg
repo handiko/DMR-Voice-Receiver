@@ -1,1 +1,133 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="300" viewBox="0 0 1240 300" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" role="img"><title>Front end: from the dongle to symbol readings</title><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#3d3d3a"/></marker><marker id="ahm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#A32D2D"/></marker></defs><rect width="1240" height="300" fill="#FFFFFF"/><text x="20.0" y="22.0" font-size="15" fill="#2C2C2A" font-weight="700" text-anchor="start" dominant-baseline="central">Steps ①–③ — tuning in, the discriminator and the matched filter (all stock blocks)</text><rect x="20" y="70" width="220" height="80" rx="5" fill="#F4F4F2" stroke="#B4B2A9" stroke-width="1"/><text x="130.0" y="93.0" font-size="14" fill="#5F5E5A" font-weight="600" text-anchor="middle" dominant-baseline="central">RTL-SDR Source</text><text x="130.0" y="111.0" font-size="12" fill="#888780" font-weight="400" text-anchor="middle" dominant-baseline="central">tuned 100 kHz below</text><text x="130.0" y="128.0" font-size="12" fill="#888780" font-weight="400" text-anchor="middle" dominant-baseline="central">960,000 samples/s</text><rect x="262" y="70" width="220" height="80" rx="5" fill="#F4F4F2" stroke="#B4B2A9" stroke-width="1"/><text x="372.0" y="93.0" font-size="14" fill="#5F5E5A" font-weight="600" text-anchor="middle" dominant-baseline="central">Freq Xlating FIR</text><text x="372.0" y="111.0" font-size="12" fill="#888780" font-weight="400" text-anchor="middle" dominant-baseline="central">shift +100 kHz, rough filter</text><text x="372.0" y="128.0" font-size="12" fill="#888780" font-weight="400" text-anchor="middle" dominant-baseline="central">÷4 → 240,000/s</text><path d="M240 110 L262 110" fill="none" stroke="#3d3d3a" stroke-width="1.3" marker-end="url(#ah)"/><rect x="504" y="70" width="220" height="80" rx="5" fill="#F4F4F2" stroke="#B4B2A9" stroke-width="1"/><text x="614.0" y="93.0" font-size="14" fill="#5F5E5A" font-weight="600" text-anchor="middle" dominant-baseline="central">Low Pass Filter</text><text x="614.0" y="111.0" font-size="12" fill="#888780" font-weight="400" text-anchor="middle" dominant-baseline="central">the channel filter</text><text x="614.0" y="128.0" font-size="12" fill="#888780" font-weight="400" text-anchor="middle" dominant-baseline="central">÷5 → 48,000/s</text><path d="M482 110 L504 110" fill="none" stroke="#3d3d3a" stroke-width="1.3" marker-end="url(#ah)"/><rect x="746" y="70" width="220" height="80" rx="5" fill="#F4F4F2" stroke="#B4B2A9" stroke-width="1"/><text x="856.0" y="93.0" font-size="14" fill="#5F5E5A" font-weight="600" text-anchor="middle" dominant-baseline="central">Quadrature Demod</text><text x="856.0" y="111.0" font-size="12" fill="#888780" font-weight="400" text-anchor="middle" dominant-baseline="central">frequency reading</text><text x="856.0" y="128.0" font-size="12" fill="#888780" font-weight="400" text-anchor="middle" dominant-baseline="central">648 Hz = 1.0</text><path d="M724 110 L746 110" fill="none" stroke="#3d3d3a" stroke-width="1.3" marker-end="url(#ah)"/><rect x="988" y="70" width="220" height="80" rx="5" fill="#E6F1FB" stroke="#185FA5" stroke-width="1"/><text x="1098.0" y="93.0" font-size="14" fill="#0C447C" font-weight="600" text-anchor="middle" dominant-baseline="central">FIR Filter (RRC)</text><text x="1098.0" y="111.0" font-size="12" fill="#185FA5" font-weight="400" text-anchor="middle" dominant-baseline="central">matched filter</text><text x="1098.0" y="128.0" font-size="12" fill="#185FA5" font-weight="400" text-anchor="middle" dominant-baseline="central">inside the hier block</text><path d="M966 110 L988 110" fill="none" stroke="#3d3d3a" stroke-width="1.3" marker-end="url(#ah)"/><text x="20.0" y="185.0" font-size="12" fill="#3d3d3a" font-weight="700" text-anchor="start" dominant-baseline="central">Real-world equivalent:</text><text x="130.0" y="210.0" font-size="12" fill="#5F5E5A" font-weight="400" text-anchor="middle" dominant-baseline="central">antenna, mixer, ADC</text><text x="372.0" y="210.0" font-size="12" fill="#5F5E5A" font-weight="400" text-anchor="middle" dominant-baseline="central">1st IF + anti-alias filter</text><text x="614.0" y="210.0" font-size="12" fill="#5F5E5A" font-weight="400" text-anchor="middle" dominant-baseline="central">IF crystal filter</text><text x="856.0" y="210.0" font-size="12" fill="#5F5E5A" font-weight="400" text-anchor="middle" dominant-baseline="central">FM discriminator</text><text x="1098.0" y="210.0" font-size="12" fill="#5F5E5A" font-weight="400" text-anchor="middle" dominant-baseline="central">receive half of the RRC pair</text><text x="20.0" y="250.0" font-size="12" fill="#5F5E5A" font-weight="400" text-anchor="start" dominant-baseline="central">Why 960 kS/s? 960,000 = 4,800 × 200, so ÷4 ÷5 lands on exactly 10 samples per symbol — no fractional resampling anywhere.</text><text x="20.0" y="272.0" font-size="12" fill="#5F5E5A" font-weight="400" text-anchor="start" dominant-baseline="central">Why 100 kHz below? RTL dongles have a spike of junk at exactly their tuned frequency; we keep the channel away from it.</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" width="1000" height="680" font-family="Helvetica, Arial, 'Liberation Sans', 'DejaVu Sans', sans-serif" role="img" aria-label="Front end: tuning, channel filter, discriminator, matched filter"><title>Front end: tuning, channel filter, discriminator, matched filter</title><defs><marker id="a" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,1 L10,5 L0,9 z" fill="#1b1b1b"/></marker><marker id="o" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,1 L10,5 L0,9" fill="none" stroke="#1b1b1b" stroke-width="1.4"/></marker><marker id="r" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,1 L10,5 L0,9 z" fill="#a3312a"/></marker></defs><rect width="100%" height="100%" fill="#ffffff"/><text x="20.0" y="26.0" font-size="19" fill="#1b1b1b" font-weight="700" text-anchor="start" dominant-baseline="central">Tuning in, demodulating and sharpening the symbols</text>
+<text x="20.0" y="58.0" font-size="15" fill="#1b1b1b" font-weight="700" text-anchor="start" dominant-baseline="central">(a) From the antenna to x[n], all stock blocks</text>
+<line x1="34.0" y1="128.0" x2="34.0" y2="90.0" stroke="#1b1b1b" stroke-width="1.4"/>
+<polyline points="21.0,84.0 34.0,100.0 47.0,84.0" fill="none" stroke="#1b1b1b" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="21.0" y1="84.0" x2="47.0" y2="84.0" stroke="#1b1b1b" stroke-width="1.4"/>
+<polyline points="34.0,128.0 34.0,148.0 56.0,148.0" fill="none" stroke="#1b1b1b" stroke-width="1.3" marker-end="url(#a)"/>
+<rect x="58.0" y="98.0" width="92.0" height="64.0" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.4"/>
+<text x="104.0" y="121.0" font-size="15" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central">RTL-SDR</text>
+<text x="104.0" y="140.0" font-size="13" fill="#666666" font-weight="400" text-anchor="middle" dominant-baseline="central">960 kS/s</text>
+<polyline points="150.0,130.0 210.0,130.0" fill="none" stroke="#1b1b1b" stroke-width="1.3" marker-end="url(#a)"/>
+<circle cx="226.0" cy="130.0" r="15.0" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.4"/>
+<line x1="216.7" y1="120.7" x2="235.3" y2="139.3" stroke="#1b1b1b" stroke-width="1.3"/>
+<line x1="216.7" y1="139.3" x2="235.3" y2="120.7" stroke="#1b1b1b" stroke-width="1.3"/>
+<polyline points="226.0,178.0 226.0,147.0" fill="none" stroke="#1b1b1b" stroke-width="1.3" marker-end="url(#a)"/>
+<text x="226.0" y="196.0" font-size="20" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central" font-family="'Times New Roman', Times, 'Liberation Serif', 'DejaVu Serif', serif" font-style="italic">e<tspan baseline-shift="super" font-size="72%">−j2π fₒ n / fₛ</tspan></text>
+<text x="226.0" y="216.0" font-size="13" fill="#666666" font-weight="400" text-anchor="middle" dominant-baseline="central">fₒ = 100 kHz</text>
+<polyline points="241.0,130.0 262.0,130.0" fill="none" stroke="#1b1b1b" stroke-width="1.3" marker-end="url(#a)"/>
+<rect x="264.0" y="102.0" width="60.0" height="56.0" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.4"/>
+<polyline points="274.8,142.3 283.2,142.3 287.1,117.7 300.9,117.7 304.8,142.3 313.2,142.3" fill="none" stroke="#1b1b1b" stroke-width="1.3" stroke-linejoin="round"/>
+<line x1="274.8" y1="145.3" x2="313.2" y2="145.3" stroke="#666666" stroke-width="0.9"/>
+<text x="294.0" y="88.0" font-size="13" fill="#666666" font-weight="400" text-anchor="middle" dominant-baseline="central">±40 kHz</text>
+<polyline points="324.0,130.0 338.0,130.0" fill="none" stroke="#1b1b1b" stroke-width="1.3" marker-end="url(#a)"/>
+<rect x="340.0" y="102.0" width="46.0" height="56.0" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.4"/>
+<text x="363.0" y="130.0" font-size="19" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central" font-family="'Times New Roman', Times, 'Liberation Serif', 'DejaVu Serif', serif">↓4</text>
+<rect x="202.0" y="72.0" width="196.0" height="106.0" fill="none" stroke="#666666" stroke-width="1.0" stroke-dasharray="5 4"/>
+<polyline points="386.0,130.0 444.0,130.0" fill="none" stroke="#1b1b1b" stroke-width="1.3" marker-end="url(#a)"/>
+<text x="415.0" y="116.0" font-size="13" fill="#666666" font-weight="400" text-anchor="middle" dominant-baseline="central">240k</text>
+<rect x="446.0" y="102.0" width="60.0" height="56.0" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.4"/>
+<polyline points="456.8,142.3 465.2,142.3 469.1,117.7 482.9,117.7 486.8,142.3 495.2,142.3" fill="none" stroke="#1b1b1b" stroke-width="1.3" stroke-linejoin="round"/>
+<line x1="456.8" y1="145.3" x2="495.2" y2="145.3" stroke="#666666" stroke-width="0.9"/>
+<text x="476.0" y="88.0" font-size="13" fill="#666666" font-weight="400" text-anchor="middle" dominant-baseline="central">±6 kHz</text>
+<polyline points="506.0,130.0 520.0,130.0" fill="none" stroke="#1b1b1b" stroke-width="1.3" marker-end="url(#a)"/>
+<rect x="522.0" y="102.0" width="46.0" height="56.0" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.4"/>
+<text x="545.0" y="130.0" font-size="19" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central" font-family="'Times New Roman', Times, 'Liberation Serif', 'DejaVu Serif', serif">↓5</text>
+<rect x="438.0" y="72.0" width="140.0" height="106.0" fill="none" stroke="#666666" stroke-width="1.0" stroke-dasharray="5 4"/>
+<polyline points="568.0,130.0 624.0,130.0" fill="none" stroke="#1b1b1b" stroke-width="1.3" marker-end="url(#a)"/>
+<text x="596.0" y="116.0" font-size="13" fill="#666666" font-weight="400" text-anchor="middle" dominant-baseline="central">48k</text>
+<rect x="626.0" y="98.0" width="170.0" height="64.0" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.4"/>
+<text x="711.0" y="121.0" font-size="17" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central" font-family="'Times New Roman', Times, 'Liberation Serif', 'DejaVu Serif', serif" font-style="italic">arg{ r[n] r<tspan baseline-shift="super" font-size="72%">*</tspan>[n−1] }</text>
+<text x="711.0" y="142.0" font-size="13" fill="#666666" font-weight="400" text-anchor="middle" dominant-baseline="central">× fₛ / (2π · 648 Hz)</text>
+<polyline points="796.0,130.0 846.0,130.0" fill="none" stroke="#1b1b1b" stroke-width="1.3" marker-end="url(#a)"/>
+<rect x="848.0" y="102.0" width="80.0" height="56.0" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.4"/>
+<text x="888.0" y="130.0" font-size="18" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central" font-family="'Times New Roman', Times, 'Liberation Serif', 'DejaVu Serif', serif" font-style="italic">h<tspan baseline-shift="sub" font-size="72%">RRC</tspan>[n]</text>
+<polyline points="928.0,130.0 956.0,130.0" fill="none" stroke="#1b1b1b" stroke-width="1.3" marker-end="url(#a)"/>
+<text x="978.0" y="130.0" font-size="18" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central" font-family="'Times New Roman', Times, 'Liberation Serif', 'DejaVu Serif', serif" font-style="italic">x[n]</text>
+<text x="300.0" y="238.0" font-size="13" fill="#666666" font-weight="400" text-anchor="middle" dominant-baseline="central" font-style="italic">Freq Xlating FIR Filter</text>
+<text x="300.0" y="258.0" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central">mixer + roofing filter</text>
+<text x="508.0" y="238.0" font-size="13" fill="#666666" font-weight="400" text-anchor="middle" dominant-baseline="central" font-style="italic">Low Pass Filter</text>
+<text x="508.0" y="258.0" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central">IF channel filter</text>
+<text x="711.0" y="238.0" font-size="13" fill="#666666" font-weight="400" text-anchor="middle" dominant-baseline="central" font-style="italic">Quadrature Demod</text>
+<text x="711.0" y="258.0" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central">FM discriminator</text>
+<text x="888.0" y="238.0" font-size="13" fill="#666666" font-weight="400" text-anchor="middle" dominant-baseline="central" font-style="italic">FIR Filter</text>
+<text x="888.0" y="258.0" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central">matched filter</text>
+<text x="20.0" y="292.0" font-size="14" fill="#1b1b1b" font-weight="400" text-anchor="start" dominant-baseline="central">960,000 = 4,800 × 200, so ÷4 then ÷5 gives exactly 10 samples per symbol. 648 Hz reads as 1.0, so the four tones read ±1 and ±3.</text>
+<text x="20.0" y="336.0" font-size="15" fill="#1b1b1b" font-weight="700" text-anchor="start" dominant-baseline="central">(b) RRC at both ends = a raised-cosine pulse</text>
+<line x1="80.0" y1="551.1" x2="470.0" y2="551.1" stroke="#e6e6e6" stroke-width="1"/>
+<line x1="80.0" y1="473.3" x2="470.0" y2="473.3" stroke="#e6e6e6" stroke-width="1"/>
+<line x1="80.0" y1="395.6" x2="470.0" y2="395.6" stroke="#e6e6e6" stroke-width="1"/>
+<line x1="80.0" y1="590.0" x2="470.0" y2="590.0" stroke="#1b1b1b" stroke-width="1.2"/>
+<line x1="80.0" y1="590.0" x2="80.0" y2="380.0" stroke="#1b1b1b" stroke-width="1.2"/>
+<line x1="80.0" y1="590.0" x2="80.0" y2="595.0" stroke="#1b1b1b" stroke-width="1.1"/>
+<text x="80.0" y="607.0" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central">-4</text>
+<line x1="128.8" y1="590.0" x2="128.8" y2="595.0" stroke="#1b1b1b" stroke-width="1.1"/>
+<text x="128.8" y="607.0" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central">-3</text>
+<line x1="177.5" y1="590.0" x2="177.5" y2="595.0" stroke="#1b1b1b" stroke-width="1.1"/>
+<text x="177.5" y="607.0" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central">-2</text>
+<line x1="226.2" y1="590.0" x2="226.2" y2="595.0" stroke="#1b1b1b" stroke-width="1.1"/>
+<text x="226.2" y="607.0" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central">-1</text>
+<line x1="275.0" y1="590.0" x2="275.0" y2="595.0" stroke="#1b1b1b" stroke-width="1.1"/>
+<text x="275.0" y="607.0" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central">0</text>
+<line x1="323.8" y1="590.0" x2="323.8" y2="595.0" stroke="#1b1b1b" stroke-width="1.1"/>
+<text x="323.8" y="607.0" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central">1</text>
+<line x1="372.5" y1="590.0" x2="372.5" y2="595.0" stroke="#1b1b1b" stroke-width="1.1"/>
+<text x="372.5" y="607.0" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central">2</text>
+<line x1="421.2" y1="590.0" x2="421.2" y2="595.0" stroke="#1b1b1b" stroke-width="1.1"/>
+<text x="421.2" y="607.0" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central">3</text>
+<line x1="470.0" y1="590.0" x2="470.0" y2="595.0" stroke="#1b1b1b" stroke-width="1.1"/>
+<text x="470.0" y="607.0" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central">4</text>
+<line x1="75.0" y1="551.1" x2="80.0" y2="551.1" stroke="#1b1b1b" stroke-width="1.1"/>
+<text x="71.0" y="551.1" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="end" dominant-baseline="central">0.0</text>
+<line x1="75.0" y1="473.3" x2="80.0" y2="473.3" stroke="#1b1b1b" stroke-width="1.1"/>
+<text x="71.0" y="473.3" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="end" dominant-baseline="central">0.5</text>
+<line x1="75.0" y1="395.6" x2="80.0" y2="395.6" stroke="#1b1b1b" stroke-width="1.1"/>
+<text x="71.0" y="395.6" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="end" dominant-baseline="central">1.0</text>
+<text x="275.0" y="628.0" font-size="14" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central">time (symbols)</text>
+<line x1="80.0" y1="551.1" x2="470.0" y2="551.1" stroke="#666666" stroke-width="1"/>
+<polyline points="80.0,550.9 84.9,553.1 89.8,555.4 94.6,557.5 99.5,559.1 104.4,560.0 109.2,560.1 114.1,559.2 119.0,557.4 123.9,554.6 128.8,551.2 133.6,547.3 138.5,543.4 143.4,539.8 148.2,537.0 153.1,535.4 158.0,535.3 162.9,536.8 167.8,540.1 172.6,544.9 177.5,551.1 182.4,558.2 187.2,565.5 192.1,572.3 197.0,577.9 201.9,581.5 206.8,582.4 211.6,580.1 216.5,574.1 221.4,564.4 226.2,551.1 231.1,534.6 236.0,515.5 240.9,494.9 245.8,473.6 250.6,453.0 255.5,434.0 260.4,418.0 265.2,405.8 270.1,398.2 275.0,395.6 279.9,398.2 284.8,405.8 289.6,418.0 294.5,434.0 299.4,453.0 304.2,473.6 309.1,494.9 314.0,515.5 318.9,534.6 323.8,551.1 328.6,564.4 333.5,574.1 338.4,580.1 343.2,582.4 348.1,581.5 353.0,577.9 357.9,572.3 362.8,565.5 367.6,558.2 372.5,551.1 377.4,544.9 382.2,540.1 387.1,536.8 392.0,535.3 396.9,535.4 401.8,537.0 406.6,539.8 411.5,543.4 416.4,547.3 421.2,551.2 426.1,554.6 431.0,557.4 435.9,559.2 440.8,560.1 445.6,560.0 450.5,559.1 455.4,557.5 460.2,555.4 465.1,553.1 470.0,550.9" fill="none" stroke="#1b1b1b" stroke-width="1.6" stroke-linejoin="round"/>
+<polyline points="80.0,547.1 84.9,548.3 89.8,550.1 94.6,552.2 99.5,554.5 104.4,556.7 109.2,558.5 114.1,559.5 119.0,559.6 123.9,558.7 128.8,556.7 133.6,553.7 138.5,550.0 143.4,545.9 148.2,542.0 153.1,538.6 158.0,536.3 162.9,535.5 167.8,536.5 172.6,539.5 177.5,544.2 182.4,550.6 187.2,557.9 192.1,565.6 197.0,572.7 201.9,578.4 206.8,581.7 211.6,581.9 216.5,578.3 221.4,570.7 226.2,558.9 231.1,543.2 236.0,524.3 240.9,503.1 245.8,480.7 250.6,458.6 255.5,438.1 260.4,420.5 265.2,407.0 270.1,398.5 275.0,395.6 279.9,398.5 284.8,407.0 289.6,420.5 294.5,438.1 299.4,458.6 304.2,480.7 309.1,503.1 314.0,524.3 318.9,543.2 323.8,558.9 328.6,570.7 333.5,578.3 338.4,581.9 343.2,581.7 348.1,578.4 353.0,572.7 357.9,565.6 362.8,557.9 367.6,550.6 372.5,544.2 377.4,539.5 382.2,536.5 387.1,535.5 392.0,536.3 396.9,538.6 401.8,542.0 406.6,545.9 411.5,550.0 416.4,553.7 421.2,556.7 426.1,558.7 431.0,559.6 435.9,559.5 440.8,558.5 445.6,556.7 450.5,554.5 455.4,552.2 460.2,550.1 465.1,548.3 470.0,547.1" fill="none" stroke="#666666" stroke-width="1.1" stroke-linejoin="round"/>
+<circle cx="80.0" cy="550.9" r="3.6" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.3"/>
+<circle cx="128.8" cy="551.2" r="3.6" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.3"/>
+<circle cx="177.5" cy="551.1" r="3.6" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.3"/>
+<circle cx="226.2" cy="551.1" r="3.6" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.3"/>
+<circle cx="275.0" cy="395.6" r="3.6" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.3"/>
+<circle cx="323.8" cy="551.1" r="3.6" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.3"/>
+<circle cx="372.5" cy="551.1" r="3.6" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.3"/>
+<circle cx="421.2" cy="551.2" r="3.6" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.3"/>
+<circle cx="470.0" cy="550.9" r="3.6" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="289.6" y="391.6" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="start" dominant-baseline="central">raised cosine</text>
+<text x="206.8" y="465.6" font-size="13" fill="#666666" font-weight="400" text-anchor="end" dominant-baseline="central">one RRC</text>
+<text x="40.0" y="656.0" font-size="13.5" fill="#1b1b1b" font-weight="400" text-anchor="start" dominant-baseline="central">Zero at all the other symbol centres: neighbours add nothing (no ISI).</text>
+<text x="520.0" y="336.0" font-size="15" fill="#1b1b1b" font-weight="700" text-anchor="start" dominant-baseline="central">(c) x[n] for 14 symbols; dots = symbol centres</text>
+<line x1="580.0" y1="563.8" x2="975.0" y2="563.8" stroke="#e6e6e6" stroke-width="1"/>
+<line x1="580.0" y1="511.2" x2="975.0" y2="511.2" stroke="#e6e6e6" stroke-width="1"/>
+<line x1="580.0" y1="458.8" x2="975.0" y2="458.8" stroke="#e6e6e6" stroke-width="1"/>
+<line x1="580.0" y1="406.2" x2="975.0" y2="406.2" stroke="#e6e6e6" stroke-width="1"/>
+<line x1="580.0" y1="590.0" x2="975.0" y2="590.0" stroke="#1b1b1b" stroke-width="1.2"/>
+<line x1="580.0" y1="590.0" x2="580.0" y2="380.0" stroke="#1b1b1b" stroke-width="1.2"/>
+<line x1="575.0" y1="563.8" x2="580.0" y2="563.8" stroke="#1b1b1b" stroke-width="1.1"/>
+<text x="571.0" y="563.8" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="end" dominant-baseline="central">-3</text>
+<line x1="575.0" y1="511.2" x2="580.0" y2="511.2" stroke="#1b1b1b" stroke-width="1.1"/>
+<text x="571.0" y="511.2" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="end" dominant-baseline="central">-1</text>
+<line x1="575.0" y1="458.8" x2="580.0" y2="458.8" stroke="#1b1b1b" stroke-width="1.1"/>
+<text x="571.0" y="458.8" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="end" dominant-baseline="central">+1</text>
+<line x1="575.0" y1="406.2" x2="580.0" y2="406.2" stroke="#1b1b1b" stroke-width="1.1"/>
+<text x="571.0" y="406.2" font-size="13" fill="#1b1b1b" font-weight="400" text-anchor="end" dominant-baseline="central">+3</text>
+<line x1="580.0" y1="485.0" x2="975.0" y2="485.0" stroke="#666666" stroke-width="1"/>
+<polyline points="580.0,458.1 582.8,452.8 585.6,449.4 588.5,448.0 591.3,448.1 594.1,449.6 596.9,451.8 599.8,454.3 602.6,456.5 605.4,458.0 608.2,458.6 611.0,458.1 613.9,456.7 616.7,454.4 619.5,451.9 622.3,449.5 625.1,447.8 628.0,447.4 630.8,448.7 633.6,452.3 636.4,458.2 639.2,466.4 642.1,476.8 644.9,488.9 647.7,502.1 650.5,515.8 653.4,529.1 656.2,541.3 659.0,551.6 661.8,559.4 664.6,564.4 667.5,566.3 670.3,565.2 673.1,561.4 675.9,555.3 678.8,547.6 681.6,539.0 684.4,530.4 687.2,522.5 690.0,516.0 692.9,511.6 695.7,509.6 698.5,510.1 701.3,513.1 704.1,518.3 707.0,525.3 709.8,533.5 712.6,542.2 715.4,550.7 718.2,558.3 721.1,564.5 723.9,568.7 726.7,570.6 729.5,570.1 732.4,567.1 735.2,561.8 738.0,554.4 740.8,545.3 743.6,534.9 746.5,523.5 749.3,511.5 752.1,499.3 754.9,487.1 757.8,475.1 760.6,463.4 763.4,452.2 766.2,441.5 769.0,431.4 771.9,422.1 774.7,413.6 777.5,406.3 780.3,400.5 783.1,396.4 786.0,394.4 788.8,394.9 791.6,398.3 794.4,404.6 797.2,414.0 800.1,426.4 802.9,441.4 805.7,458.6 808.5,477.3 811.4,496.6 814.2,515.5 817.0,533.0 819.8,548.1 822.6,560.0 825.5,567.9 828.3,571.4 831.1,570.2 833.9,564.6 836.8,555.0 839.6,542.1 842.4,527.0 845.2,510.9 848.0,495.1 850.9,480.8 853.7,469.2 856.5,461.2 859.3,457.6 862.1,458.5 865.0,464.0 867.8,473.5 870.6,486.3 873.4,501.2 876.2,517.0 879.1,532.4 881.9,545.9 884.7,556.3 887.5,562.7 890.4,564.4 893.2,560.9 896.0,552.5 898.8,539.5 901.6,522.6 904.5,503.0 907.3,481.8 910.1,460.2 912.9,439.6 915.8,421.0 918.6,405.3 921.4,393.2 924.2,384.8 927.0,380.2 929.9,379.1 932.7,380.9 935.5,384.9 938.3,390.2 941.1,395.9 944.0,401.4 946.8,405.9 949.6,409.1 952.4,410.7 955.2,410.9 958.1,409.8 960.9,407.9 963.7,405.7 966.5,403.8 969.4,402.8 972.2,403.1" fill="none" stroke="#1b1b1b" stroke-width="1.4" stroke-linejoin="round"/>
+<circle cx="580.0" cy="458.1" r="3.4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<circle cx="608.2" cy="458.6" r="3.4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<circle cx="636.4" cy="458.2" r="3.4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<circle cx="664.6" cy="564.4" r="3.4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<circle cx="692.9" cy="511.6" r="3.4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<circle cx="721.1" cy="564.5" r="3.4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<circle cx="749.3" cy="511.5" r="3.4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<circle cx="777.5" cy="406.3" r="3.4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<circle cx="805.7" cy="458.6" r="3.4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<circle cx="833.9" cy="564.6" r="3.4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<circle cx="862.1" cy="458.5" r="3.4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<circle cx="890.4" cy="564.4" r="3.4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<circle cx="918.6" cy="405.3" r="3.4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<circle cx="946.8" cy="405.9" r="3.4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<text x="777.5" y="610.0" font-size="13.5" fill="#1b1b1b" font-weight="400" text-anchor="middle" dominant-baseline="central">48,000 samples/s = 10 per symbol</text>
+<text x="540.0" y="656.0" font-size="13.5" fill="#1b1b1b" font-weight="400" text-anchor="start" dominant-baseline="central">Pick the right sample in each 10 and you read ±1 / ±3 exactly.</text></svg>
