@@ -2,7 +2,7 @@
 
 *A long, honest walkthrough of my DMR receiver: how a cheap dongle and a pile of GNU Radio blocks can find DMR bursts, read who is talking to whom, follow a Tier III control channel, and turn the voice bits back into speech you can actually hear.*
 
-[Code repo here](https://github.com/handiko/DMR-Voice-Decoder)
+[Code repo here](https://github.com/handiko/DMR-Voice-Receiver)
 
 ![](dmr.png)
 
@@ -572,3 +572,6 @@ There's a lot of room for improvement!
 - **mbelib** and **mbelib-neo**, for AMBE+2 decoding.
 - **MMDVMHost**, whose encoder code I used to build my test recordings.
 - **Claude (Anthropic)**, for helping write and test the code and this document.
+
+## Other SDR Receiver Project(s)
+- [TETRA Rx](https://handiko.github.io/TETRA-Rx/)
