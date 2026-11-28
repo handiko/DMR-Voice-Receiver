@@ -573,7 +573,4 @@ There's a lot of room for improvement!
 - **MMDVMHost**, whose encoder code I used to build my test recordings.
 - **Claude (Anthropic)**, for helping write and test the code and this document.
 
-## Other SDR Receiver Project
-- [TETRA Rx](https://handiko.github.io/TETRA-Rx/)
-- [GPS L1 C/A Receiver](https://handiko.github.io/GPS-L1-CA-Rx/)
-- [GNU Radio LoRa APRS  Rx](https://handiko.github.io/LoRa-APRS-RX-GNU-Radio/)
+__[GNU RADIO PROJECT INDEX](https://handiko.github.io/GNU-Radio-Projects-Index/)__
